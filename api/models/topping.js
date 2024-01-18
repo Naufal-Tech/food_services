@@ -8,7 +8,6 @@ const toppingSchema = new mongoose.Schema(
     topping_name: {
       type: String,
       required: true,
-      unique: true,
     },
 
     price: {

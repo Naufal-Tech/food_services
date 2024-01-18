@@ -276,7 +276,11 @@ const FillingController = {
     session.startTransaction();
 
     try {
-      const filling = await models.FillingDB.findOne({ _id: filling_id });
+      const filling = await models.FillingDB.findOne({
+        _id: filling_id,
+        deleted_by: { $exists: false },
+        deleted_at: { $exists: false },
+      });
 
       if (!filling) {
         throw new NotFoundError(

@@ -13,10 +13,13 @@ toppingRouter.get("/detail/:id", middleware.protect, Controller.detail);
 // TOPPING VIEW ALL (GET): /api/v1
 toppingRouter.get("/", middleware.protect, Controller.get);
 
-// TOPPING (DELETE): /api/v1
+// TOPPING (DELETE MANY): /api/v1/food
 toppingRouter.delete("/", middleware.protect, Controller.delete);
 
-// TOPPING (DELETE): /api/v1
+// TOPPING (DELETE SINGLE or PULL SINGLE): /api/v1/food/single
 toppingRouter.delete("/single", middleware.protect, Controller.deleteOne);
+
+// TOPPING (PATCH or UPDATE SINGLE): /api/v1/food/push
+toppingRouter.patch("/push", middleware.protect, Controller.push);
 
 export default toppingRouter;

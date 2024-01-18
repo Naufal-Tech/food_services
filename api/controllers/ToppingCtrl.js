@@ -275,7 +275,11 @@ const ToppingController = {
     session.startTransaction();
 
     try {
-      const topping = await models.ToppingDB.findOne({ _id: topping_id });
+      const topping = await models.ToppingDB.findOne({
+        _id: topping_id,
+        deleted_by: { $exists: false },
+        deleted_at: { $exists: false },
+      });
 
       if (!topping) {
         throw new NotFoundError(
